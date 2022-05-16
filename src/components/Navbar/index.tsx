@@ -1,10 +1,13 @@
+import {Link} from 'react-router-dom';
 import logo from '../logo.svg';
 
 export default function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mt-0">
             <div className="container">
-                <img src={logo} alt="logo" width="50px"/>
+                <Link to={"/"}>
+                    <img src={logo} alt="logo" width="50px"/>
+                </Link>
                 <a className="navbar-brand" href="#">Raven music</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
