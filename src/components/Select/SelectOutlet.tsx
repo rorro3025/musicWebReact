@@ -6,6 +6,9 @@ import {Outlet} from "../../interfaces/database";
 export default function SelectOutlet(){
     const {setOutlet} = useApp();
     const [outlets,setOutlets] = useState<Outlet[]>([]);
+    const [option,setOption] = useState({
+        value:"none",
+    })
 
     const getOutlets = async () =>{
        const uri = 'http://localhost:8080/api/outlets';
@@ -15,18 +18,20 @@ export default function SelectOutlet(){
     }
 
     useEffect(()=>{
-        getOutlets();
+        getOutlets().catch(null);
     },[]);
 
     const handleChange = ({target}: ChangeEvent<HTMLSelectElement>) =>{
         let {value} = target;
+        setOption({value});
         setOutlet(Number(value));
     }
+    // <option value="none" selected disabled hidden>Select an Option</option>
     return (<div className="card">
             <div className="card-body">
                 <h5 className="card-title">Select outlet</h5>
-                <select className={"form-control"} onChange={handleChange}>
-                    <option value="none" selected disabled hidden>Select an Option</option>
+                <select className={"form-control"} onChange={handleChange} value={option.value}>
+                    <option value={"none"}>Select an Option</option>
                     {outlets.map((item) => {
                         return <option key={item.id} value={item.id}>{item.city}</option>
                     })}

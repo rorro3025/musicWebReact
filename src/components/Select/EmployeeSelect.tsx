@@ -4,10 +4,16 @@ import {Employee} from '../../interfaces/database';
 import {useApp} from '../../store/provider';
 import {useNavigate} from "react-router-dom";
 
-export default function Select() {
+interface Props{
+    handleError:(op:boolean)=>void
+}
+export default function Select({handleError}:Props){
     const navigate = useNavigate();
-    const {setUser,outlet} = useApp();
+    const {setUser, outlet} = useApp();
     const [list, setList] = useState<Employee[]>([]);
+    const [option,setOption] = useState({
+        value:"none",
+    })
 
     const getEmployeesList = async (id: number) => {
         let uri = `http://localhost:8080/api/employeesByStore/${id}`;
@@ -23,23 +29,31 @@ export default function Select() {
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
-        setUser(Number(value));
+        setOption({value})
         console.log(value);
     }
-    const handleSubmit=()=>{
-        navigate('/menu');
+    const handleSubmit = () => {
+        if (option.value !== "none") {
+            console.log(option.value);
+            setUser(Number(option.value));
+            navigate('/menu');
+            handleError(false)
+        } else {
+            handleError(true);
+        }
     }
     return (<div className="card">
             <div className="card-body">
                 <h5 className="card-title">Select Employee</h5>
-                <select className={"form-control"} onChange={handleChange}>
+                <select className={"form-control"} id="selection" onChange={handleChange} value={option.value}>
+                    <option value={"none"}>Select an Option</option>
                     {list.map((emp) => {
                         return <option key={emp.id} value={emp.id}>{emp.name}</option>
                     })}
                 </select>
                 <div className="d-grid gap-2">
                     <button className={"btn btn-success mt-2"} onClick={handleSubmit}>
-                            Access
+                        Access
                     </button>
                 </div>
             </div>
