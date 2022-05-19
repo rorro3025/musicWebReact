@@ -1,11 +1,10 @@
 
 interface Props{
     title:string,
-    link:string,
     image:string,
 }
 
-export default function MenuItem({title,link,image}:Props){
+export default function MenuItem({title,image}:Props){
     const handleClick = ()=>{
        console.log(title)
     }

@@ -24,5 +24,5 @@ export interface Product{
    artist:string;
    title:string;
    cost:number;
-   price:number;
+   salePrice:number;
 }
