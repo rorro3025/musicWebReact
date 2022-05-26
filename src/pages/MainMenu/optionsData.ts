@@ -12,13 +12,19 @@ export const options: Option[] = [
         link: "/returns",
         option: 1
     }, {
-        title: "Manage employees and customers",
-        description: "Crate, edit and delete employees and customers if you have the right permissions",
+        title: "Manage employees ",
+        description: "Create, edit and delete employees if you have the right permissions",
         link: "/management/employees",
         option: 2
+    }, {
+        title: "Manage customers",
+        description: "Create, edit and delete customers if you have the right permissions",
+        link: "/management/customers",
+        option: 3
     }, {
         title: "Manage products",
         description: "Create, edit and delete products if you have the right permissions",
         link: "/products",
-        option: 3
-    }];
+        option: 4
+    }
+];

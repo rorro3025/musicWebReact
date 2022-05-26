@@ -16,7 +16,7 @@ interface Props {
 
 export default function CardMenuItem({option, title,description,link}: Props) {
     const navigate = useNavigate();
-    const icons = [<MdPointOfSale/>, <GiReturnArrow/>, <FaUsersCog/>, <MdOutlineInventory/>]
+    const icons = [<MdPointOfSale/>, <GiReturnArrow/>, <FaUsersCog/>, <FaUsersCog/>, <MdOutlineInventory/>]
     const handleClick = () => {
         navigate(link)
         console.log(option,link);
