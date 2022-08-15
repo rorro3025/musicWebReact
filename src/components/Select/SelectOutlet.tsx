@@ -2,6 +2,7 @@ import {useState, useEffect, ChangeEvent} from "react";
 import {useApp} from "../../store/provider";
 
 import {Outlet} from "../../interfaces/database";
+import {getAllOutlets} from "./controller";
 
 export default function SelectOutlet(){
     const {setOutlet} = useApp();
@@ -10,15 +11,8 @@ export default function SelectOutlet(){
         value:"none",
     })
 
-    const getOutlets = async () =>{
-       const uri = 'http://localhost:8080/api/outlets';
-       let response = await fetch(uri);
-       let data = await response.json();
-       setOutlets(data);
-    }
-
     useEffect(()=>{
-        getOutlets().catch(null);
+        getAllOutlets().then((data:Outlet[])=>setOutlets(data));
     },[]);
 
     const handleChange = ({target}: ChangeEvent<HTMLSelectElement>) =>{

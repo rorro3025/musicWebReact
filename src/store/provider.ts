@@ -1,13 +1,13 @@
 import {useContext, createContext} from "react";
 
-type AppContext = {
+type AppContextType = {
     user: number,
     outlet: number,
     setUser: (user: number) => void,
     setOutlet: (outlet: number) => void,
 }
 
-export const AppContext = createContext<AppContext>({
+export const AppContext = createContext<AppContextType>({
     user: 0,
     outlet: 0,
     setUser: () => {

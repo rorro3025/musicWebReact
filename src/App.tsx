@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import ManageEmployee from "./pages/manage/Employees";
 import ManageCustomer from "./pages/manage/Customers";
 import MainMenu from "./pages/MainMenu";
-import Sales from "./pages/Sales";
+import Sales from "./pages/Sales/Sales";
 
 function App() {
     const [user,setUser] = useState(0);

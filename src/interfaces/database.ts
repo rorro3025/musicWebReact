@@ -14,15 +14,17 @@ export interface Customer extends information {
 }
 
 export interface Employee{
-    id:number;
-    outletId:number;
+    id?:number;
+    outletNumber:number;
     name:string;
 }
 
 export interface Product{
-   id:number;
+   id?:number;
    artist:string;
    title:string;
-   cost:number;
+   cost?:number;
    salePrice:number;
+   inventory?:number;
+   quantity?:number;
 }

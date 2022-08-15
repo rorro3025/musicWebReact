@@ -3,6 +3,7 @@ import {useState, useEffect, ChangeEvent} from "react";
 import {Employee} from '../../interfaces/database';
 import {useApp} from '../../store/provider';
 import {useNavigate} from "react-router-dom";
+import {getEmployeesByOutlet} from "./controller";
 
 interface Props{
     handleError:(op:boolean)=>void
@@ -15,15 +16,8 @@ export default function Select({handleError}:Props){
         value:"none",
     })
 
-    const getEmployeesList = async (id: number) => {
-        let uri = `http://localhost:8080/api/employeesByStore/${id}`;
-        const response = await fetch(uri);
-        const data = await response.json();
-        setList(data);
-    }
-
     useEffect(() => {
-        getEmployeesList(outlet).catch(null);
+        getEmployeesByOutlet(outlet).then((data:Employee[]) => setList(data));
     }, [outlet]);
 
 

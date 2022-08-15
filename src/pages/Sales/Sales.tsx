@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import ShopList from "../components/ShopList";
+import Layout from "../../components/Layout";
+import ShopList from "../../components/ShopList";
 
 export default function Sales() {
     return (
